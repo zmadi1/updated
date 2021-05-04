@@ -1,0 +1,34 @@
+version: '3'
+
+services:
+  db:
+    command: --default-authentication-plugin=mysql_native_password
+    image: mysql
+    restart: always
+    # ports:
+    #   - 3306:3306
+    environment:
+      MYSQL_DATABASE: "zakhele"
+      MYSQL_ROOT_PASSWORD: "nahman"
+      MYSQL_USER: "madi"
+      MYSQL_PASSWORD: "secret"
+    
+
+    volumes:
+      - ./sql-scripts/CreateTable.sql:/docker-entrypoint-initdb.d/1.sql
+      - ./sql-scripts/InsertData.sql:/docker-entrypoint-initdb.d/2.sql
+
+  web:
+    build:
+      context: ./app
+    restart: always
+    ports: 
+      - 3000:3000
+    links: 
+     - "db"
+  nginx:
+    restart: always
+    build:
+      context: ./nginx
+    ports:
+      - 80:80
