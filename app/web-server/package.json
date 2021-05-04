@@ -1,0 +1,27 @@
+{
+    "name": "web-server",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    
+    "scripts": {
+        "start": "npm install && node src/app.js",
+        "dev": "nodemon src/app.js -e js,hbs"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.17.1",
+        "hbs": "^4.1.1",
+        "mysql": "2.18.1",
+        "nodeman": "^1.1.2",
+        "request": "^2.88.2",
+        "socket.io": "^4.0.1",
+        "socket.io-client": "^4.0.1",
+        "twilio": "^3.61.0"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.6"
+    }
+}
